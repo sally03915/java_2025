@@ -26,7 +26,7 @@ public class CastingEx002 {
 				+ ":::::::::::::::::::::::::::::::::::::: :::::::::::::::::::::::::::::::::\r\n"
 				+ "국어\t영어\t수학\t총점\t평균\t레벨");
 		System.out.println(kor + "\t"  + eng + "\t" + math + "\t"+ total + "\t" 
-								+ String.format("%.2f", avg)+ "\t"+level );
+								+ String.format("%.2f", avg) + "\t"+level );
 		System.out.printf("%d\t%d\t%d\t%d\t%.2f\t%d\t" ,kor,eng,math,total,avg,level );
 		
 
