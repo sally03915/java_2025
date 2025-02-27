@@ -1,3 +1,7 @@
+-------------------------------------------------------------------------------
+part1) control ★
+   - 변수 / 자료형 / 제어문 ( if/switch/ for, while, do while ) / array / method
+-------------------------------------------------------------------------------
 ■1.  java?
 1) java?
 - 프로그래밍 언어  
@@ -17,7 +21,7 @@ part1) control ★
 part2) oop 특징 ★ 면접문제
    - class / static, final , modifier  /  상속 / abstract,interface / 예외처리
 part3) oop 활용  .... 챗GPT
-   - collection ( ArrayList ) ,  Thread , lambda + Stream / io / network
+   - collection ( ArrayList ) ,  Thread , lambda + Stream ( method 많이 사용) / io / network
 
 
 
@@ -883,4 +887,277 @@ int[][] result = new int[datas.length+1][datas[0].length+1];
 60	60	60	60	240	
 
 
+연습문제15)  array
+패키지명 : com.company.java007_ex
+클래스명 :  Array2Ex007
+> 2차원배열 
+1.  new 로 만들고   5*5
+2.  데이터 넣기  for+length
+3.  데이터 출력  for+length
+
+1	2	3	4	5
+6	7	8	9	10
+11	12	13	14	15
+16	17	18	19	20
+21	22	23	24	25
+
+연습문제16)  array
+패키지명 : com.company.java007_ex
+클래스명 :  Array2Ex008
+> 2차원배열   4*4
+1.  new 로 만들고 
+2.  데이터 넣기  for+length
+3.  데이터 출력  for+length
+1	2	3	4
+1	2	3	4
+1	2	3	4
+1	2	3	4
+
  
+
+■15. method (1)
+1.   method?
+-  코드 재사용
+-  실행하고자 하는 명령어들을 {} 안에 한꺼번에 모아놓고
+-  메서드이름이 호출되면 실행되는 기능
+-  function, method, 멤버함수
+
+2. method 사용법
+Step1)  함수정의
+Step2)  함수호출
+
+
+연습문제1)  method
+패키지명 : com.company.java008_ex
+클래스명 :  MethodEx001
+다음과 같이 dog(), line(), cat() 메서드를 정의하시오.
+
+public static void main(String[] args) {
+  dog();  // 멍멍 출력
+  line();   //========= 출력 
+  cat();    // 야옹 출력
+  line();   //========= 출력
+}
+
+ 
+연습문제2)  method
+패키지명 : com.company.java008_ex
+클래스명 :  MethodEx002
+다음과 같이 test1(), test2(), hap(), disp()메서드를 정의하시오.
+
+public static void main(String[] args) {
+	 // public static  리턴값 메서드명(파라미터)
+	 test1(10);    //10 출력
+ 	 test2(1.2);   // 1.2 출력
+ 	 hap(3,5);     // 3+4+5한값  12 출력
+ 	 disp(7, '*');  // *******출력
+}
+
+
+연습문제3)  method
+패키지명 : com.company.java008_ex
+클래스명 :  MethodEx003
+
+System.out.println("1. 내가 좋아하는 숫자    :" + return_num());    // 1을 결과값으로 줌
+System.out.println("2. 10/3.0을 실수로 표현 :" + return_float());  // 3.3333을 결과값으로 줌
+System.out.println("3. BEST COLOR        :" + mycolor());      // PURPLE을 결과값으로 줌
+System.out.println("4. 장수돌침대 별이       :" + jangsu());        // ★★★★★을 결과값으로 줌  
+System.out.println("5. 10+20= " + myadd(10,20));       // 두숫자를 더한값을 결과값으로 줌  
+System.out.println("6. 반(노랑조/주황조)=" + myban('B'));  // A이면 노랑조 ,  B이면 주황조
+System.out.println("7. 당신의 학번은?" + stdId(1111));   // G하고 넣어준 학번 나오게
+System.out.println("8.당신의 평균은?" + stdAvg(88));    
+// 90점이상이면 A ,  80점이상이면 B ,  70점이상이면 C , 아니라면  D
+
+출력결과 :
+1. 내가 좋아하는 숫자    : 1
+2. 10/3.0을 실수로 표현 : 3.3333
+3. BEST COLOR        : PURPLE
+4. 장수돌침대 별이       : ★★★★★
+5. 10+20= 30
+6. 반(노랑조/주황조)= 나는 노랑조
+7. 당신의 학번은? G1111
+8. 당신의 평균은? B
+
+
+
+
+연습문제4)  method
+패키지명 : com.company.java008_ex
+클래스명 :  MethodEx004
+
+public class MethodEx004{ 
+	public static void main(String[] args) {
+	/////////////////////(1)  변수
+		String name  = ""; 
+		int kor, eng, math, total ;
+		float avg = 0.0f; 
+		String pass = "";
+		String jang = "";
+		String star= "";  
+		Scanner scanner = new Scanner(System.in);
+		
+		/////////////////////(2) 입력 : 이름, 국어, 영어, 수학점수를 입력받으시오.
+	
+		/////////////////////(3) 처리 : 
+		total = process_total(kor , eng, math);    // 1. 총점처리
+		
+		avg = process_avg(total);    //2.  평균처리
+		
+		////////3.  합격  평균이60이상이고, 각각 국어, 영어, 수학40이상/불합격/재시험-각각 40미만인게 있다면  
+		pass = process_pass(avg , kor, eng, math);  
+		
+		//////// 4. 평균이 95점이상이면 장학생
+		jang = process_scholar(  avg  ); 
+		
+		//////// 5. 평균점수대로 별표 붙이기 , 예) 70점대이면 별7개, 80점대이면 별8개, 90점대이면 별9개 , 100점이면 별10개 
+		star = process_star(avg);  
+		
+	   
+		/////////////////////(4) 출력
+		process_show(name, kor, eng, math, total, avg, pass, jang, star);
+	 
+		
+	}// end main
+ 
+	
+}// end class
+
+ 
+		::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+		이름		국어	영어	수학	총점  평균	 합격여부	장학생	랭킹
+		--------------------------------------------------------------------------------------------
+		아이언맨	100	100	100	300    100.0	 합격		장학생	**********
+		--------------------------------------------------------------------------------------------
+
+ 
+
+■16. method (2)
+1. 오버로딩
+- 메서드들을 [같은이름]으로 같게
+- 파라미터 [타입]과 [갯수]로 구분
+- public, static, 리턴값은 오버로딩에 영향을 미치지 않음!
+
+※ 참고사항 - 오버라이딩
+- 상속시 자식클래스에서 맞게 메서드를 수정
+
+
+2.  call by value  vs   call by reference
+- call by value        :  전달받은 값을 복사해서 처리 / 원본값은 변경되지 않음.
+   
+    void show(int a){  System.out.println(a*10);  }
+           show(   1 );    //10
+
+- call by reference  :  전달받은 주소를 직접 참조해서 처리 / 원본값은 변경됨.
+
+    int [] a = {1,2,3};
+    void show(int [] a){   a[0]*=10;  }
+               show(   a );    
+
+    System.out.println(  a[0]   );  //10
+
+
+연습문제6)  method
+패키지명 : com.company.java008_ex
+클래스명 :  MethodEx006
+
+public class MethodEx006{ 
+    char[] ch = {'a','b','c'};
+    upper(ch);     
+    System.out.println("main. 배열값 : "      +  Arrays.toString(ch)          );  // [A,B,C]
+}
+
+
+연습문제7)  method
+패키지명 : com.company.java008_ex
+클래스명 :  MethodEx007
+
+public class MethodEx007{ 
+	// 변수
+	String [][] users = {{ "aaa"  , "111"   , "한국"     } ,     // 00 01 02
+						    { "bbb" , "222"   , "호주"       } ,       // 10 11 12
+						    { "ccc"  , "333"   , "중국"      }};      // 20 21 22
+	// 입력
+	who_are_you(users);    
+	//  public static void who_are_you(String [][] users){  아이디를입력받아서 나라조회 }
+	who_pass_change(users); 
+	//  public static void who_pass_change(String [][] users){ 아이디,비밀번호가 맞으면 비밀번호 바꾸기}
+}
+
+출력내용) who_are_you(users);    
+//  public static void who_are_you(String [][] users){  아이디를입력받아서 나라조회 }
+아이디를 입력해주세요>aaa
+aaa는 한국사람입니다.
+
+
+출력내용)
+who_pass_change(users); 
+//  public static void who_pass_change(String [][] users){ 아이디,비밀번호가 맞으면 비밀번호 바꾸기}
+
+아이디를 입력해 주세요 > bbb
+비밀번호를 입력해 주세요 > 123
+유저를 확인해주세요!
+
+아이디를 입력해 주세요 > bbb
+비밀번호를 입력해 주세요 > 222
+변경하실 비밀번호를 입력해주세요123
+정보확인 : [bbb, 123, 호주]
+
+
+-------------------------------------------------------------------------------
+part2) oop 특징 ★ 면접문제
+   - class / static, final , modifier  /  상속 / abstract,interface / 예외처리
+-------------------------------------------------------------------------------
+
+● 1. CLASS?
+1. 자바 저장단위
+- 변수  < 배열 < 클래스
+
+2. 클래스 (CLASS)
+- 객체의 특징  예) 자동차
+- 부품객체
+- 상태(멤버변수) 와                 행위(멤버함수)를 갖는다 
+   예) 바퀴클래스, 엔진클래스 + 드라이브, 후진,파킹
+
+3. OOP?  ★
+-     객체             지향     프로그래밍
+- Object         Oriented Programming
+-     틀                 기반      프로그램
+- 부품객체(클래스)  조립    완성된 프로그램을 만드는 기법  ★
+
+4. 클래스와 인스턴스
+-1. 클래스(설계도)틀로 예) 붕어빵틀
+-2.	     인스턴스화를 통해( new 실제 메모리-heap에 객체만들기)
+-3. 		       여러개의 객체(인스턴스)를 만들기	
+			  예) 객체(Object) - 붕어빵들
+			       인스턴스      - 팥붕어빵, 슈크림뿡어빵 각각,,,
+			
+> 클래스는 설계도
+> 인스턴스는  실제로만들어진객체
+
+
+
+
+연습문제1)  class
+패키지명 : com.company.java009_ex
+클래스명 :  ClassEx001
+class Student001{
+  멤버변수 : String name;  int no, kor, eng, math;
+  멤버함수 : void info()
+}
+
+public class ClassEx001{
+   public static void main(String[] args) {
+      Student001   s1 = new Student003();
+     s1.name="first";  s1.no=11; s1.kor=100; s1.eng=100; s1.math=99;
+     s1.info();
+   }
+}
+출력내용 : 
+  이름: first
+  총점 : 299
+  평균 : 99.67
+
+
+
+
+
