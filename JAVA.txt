@@ -1158,6 +1158,260 @@ public class ClassEx001{
   평균 : 99.67
 
 
+● 2. 생성자
+1. 생성자
+ - new 연산자에 의해 호출 [ 초기화 ] 담당
 
+2. 기본생성자( 디폴트생성자 )
+- 모든클래스에 생성자가 반드시 존재
+- 생성자선언을 생략시 컴파일러가 자동으로 기본생성자를 추가
+- 개발자가 선언시 컴파일러가 자동생성 취소
+
+3. 생성자형식
+class A{
+   public    A(                 ){}   //기본생성자(디폴트생성자)
+   public    A(String name){}   //파라미터, 알규먼트가 있는 생성자.
+}
+1)  리턴값 없음          -   리턴값 메서드명(파라미터)
+2)  클래스명과 동일
+3)  디폴트생성자를 생성해야하는 경우 : 오버로딩 , 상속
+
+
+
+연습문제1)  class
+패키지명 : com.company.java010_ex
+클래스명 :  ClassEx003
+-- 생성자 작성하시오.
+class Coffee{
+  멤버변수 : String name;  int  price, num;
+  멤버함수 : void show(){}   //커피정보출력
+}
+public class Class003 {
+   public static void main(String[] args) {
+	Coffee a1 = new Coffee("까페라떼" ,2 , 4000);  a1.show();
+	Coffeea2 = new Coffee();                            a2.show();
+  }
+}
+출력내용 :
+=====커피
+커피명 : 까페라떼
+커피잔수 : 2 
+커피가격 : 8000
+=====커피
+커피명 : 아메리카노
+커피잔수 : 1
+커피가격 : 2000
+
+
+
+
+연습문제2)  class
+패키지명 : com.company.java010_ex
+클래스명 :  ClassEx004
+-- 생성자 작성하시오.
+class TV{
+//상태-멤버변수  : 채널/볼륨 String channel; int volume;	
+//행위-멤버함수  : 채널, 볼륨 입력: input() / 출력 : show()
+}
+public class ClassEx004 {
+    public static void main(String[] args) {
+	TV  t1 = new TV("JDBC" , 8);
+	t1.show(); 
+	TV  t2 = new TV();
+	t2.input();  
+	t2.show();
+   }
+}
+출력내용 :
+JDBC	8
+
+* channel입력>youtube
+* volume 입력>10
+youtube	10
+ 
+
+
+
+연습문제3)  class
+패키지명 : com.company.java010_ex
+클래스명 :  ClassEx005
+-- 생성자 작성하시오.
+class Card{
+	//상태-멤버변수  : 채널/볼륨 int cardNum; boolean  isMembership;	
+	//행위-멤버함수  : 채널, 볼륨 입력: input() / 출력 : show()
+}
+public class ClassEx005{
+   public static void main(String[] args) {
+	Card  c1= new Card(); 
+	System.out.println(c1);  
+   }
+}
+
+출력내용 :
+Card[cardNum=0, isMembership=false]
+
+ 
+
+
+연습문제4)  class
+패키지명 : com.company.java010_ex
+클래스명 :  ClassEx006
+-- 생성자 작성하시오.
+class Score{
+	//상태-멤버변수  :  String stdid; int kor,eng,math,total,avg;	
+	//행위-멤버함수  :  void total() 총점구해주기
+	//	            void avg()  평균구하기
+	//                      void info()   학생정보출력  ※힌트2)  info(){    total();  avg();     }  다른메서드에서 메서드 사용가능  
+	//※ 힌트1) 생성자 :   Score() / Score(stdid, kor, eng, math)
+}
+public class ClassEx006{
+   public static void main(String[] args) {
+	Score  s1= new Score("std1234" , 100, 100 , 99 ); 
+	s1.info();
+   }
+}
+
+출력내용 :
+학번	kor	eng	math	total	avg
+std1234   100	100	99	299	99.67
+
+ 
+
+연습문제4)  class
+패키지명 : com.company.java010_ex
+클래스명 :  ClassEx007
+-- 생성자 작성하시오.
+class Calc{
+	//상태-멤버변수  :  int num1, num2;  char op;  double result;
+	//행위-멤버함수  :  void input()   입력받기
+	//	            void opcalc() +더하기계산, -라면 -계산  , *라면 *계산 , /라면 /계산 
+	//                      void show()    연산출력   
+}
+public class ClassEx007{
+   public static void main(String[] args) {
+	Calc  c1= new Calc(10,3,'+');  
+	c1.show();
+	
+	Calc  c2= new Calc();  
+	c2.input();   
+	c2.show(); 
+	 
+   }
+}
+
+출력내용)
+10+3=3
+
+숫자1> 10
+숫자2> 3
+연산자> /
+10/3=3.33
+
+
+● 3. static
+1. runtime data area
+method : 정보저장 , static, final
+heap     : 동적저장 - new ,  gc( garbage collecetor)가 처리소멸
+stack     : 임시값저장
+
+2. static
+- jvm 소스로딩시 메모리 할당받음
+- new연산자보다 먼저 실행되어 메모리(method 영역:runtime)에 1회 생성
+- 클래스명.변수명  / 클래스명.메서드명   - 클래스변수/클래스메서드 
+  Calc.name
+- 객체생성과 관련이 없음.
+- 인스턴스로 접근시 권장사항이 아니므로 경고발생
+
+연습문제1)  static
+패키지명 : com.company.java010_ex
+클래스명 :  StaticEx001
+-- class Area1 작성해주세요   ※ pi값은 3.14159
+public class StaticEx001{
+  public static void main(String[] args) {  
+	System.out.println("원의 면적    : " + 10 * 10 * Area1.pi);
+	System.out.println("사각형의 면적 : " + Area1.rect(10, 5));
+	System.out.println("삼각형의 면적 : " + Area1.triangle(10, 5));
+  }
+}
+
+출력내용 : 
+원의 면적    : 314.159
+사각형의 면적 : 50.0
+삼각형의 면적 : 25.0
+
+
+
+
+
+연습문제2)  static
+패키지명 : com.company.java010_ex
+클래스명 :  StaticEx002
+-- class Mobile2   작성해주세요    
+
+
+class Mobile2{  
+      String   serialNo;
+      static  int count=0; 
+} 
+
+public class StaticEx002{
+  public static void main(String[] args) {
+  	Mobile2 m1 = new Mobile2(); //1. new 공간빌리기  2. 생성자()  3. 번지
+	Mobile2 m2 = new Mobile2(); 
+	Mobile2 m3 = new Mobile2();  
+	Mobile2 m4 = new Mobile2();  
+
+	System.out.println("모바일 갯수는 모두 "+ Mobile2.count +"개 입니다.");   
+	System.out.println("m1의 제품번호 " + m1.serialNo);  //1
+	System.out.println("m2의 제품번호 " + m2.serialNo);  //2
+	System.out.println("m3의 제품번호 " + m3.serialNo);  //3
+	System.out.println("m4의 제품번호 " + m4.serialNo);  //4
+  }
+}
+
+출력된결과:
+모바일 갯수는 모두 4개 입니다.
+m1의 제품번호 2030-1
+m2의 제품번호 2030-2
+m3의 제품번호 2030-3
+m4의 제품번호 2030-4
+
+
+//------------------------------------------------------------------    다음주부터
+
+
+연습문제3)  static
+패키지명 : com.company.java010_ex
+클래스명 :  StaticEx003
+-- class Sawon3작성해주세요 
+1. 인스턴스변수, 클래스변수, 지역변수 를 구분하시오.
+2. 인스턴스메서드, 클래스메서드 구분하시오.
+3. 오류나는 이유는?
+class Sawon3{ 
+	 int pay      =10000;    
+	 static int su=10;     
+	  
+	  static int basicpay=pay;   
+	  
+	 static int basicpay2;    
+	 
+	 public static void showSu() {   System.out.println(su);  }          
+	 public static void showPay() {   System.out.println(this.pay);  }    
+  
+	 public  void  showAll001() {   
+		 System.out.println(su);  
+		 System.out.println(this.pay);  
+	 } 
+	 public static  void  showAll002() {   
+		  showAll001();    
+		 System.out.println(this.pay);
+	 } 
+} 
+public class StaticEx003{
+  public static void main(String[] args) {
+	Sawon3   sola = new Sawon3();  
+	sola.showAll001();
+  }
+}
 
 

@@ -9,6 +9,7 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style></style>
 </head>
 <body>
      <div class="container card my-5">
@@ -32,12 +33,25 @@
         <button  class="btn btn-warning my-3" onclick="alert('alpha')" > TWO </button> 
         <button  class="btn btn-warning my-3" onclick="alert('dog'); alert('cat');" > animal1 </button> 
         <button  class="btn btn-warning my-3" id="a" > animal2 </button> 
+        <button  class="btn btn-warning my-3" id="b" > animal3 </button> 
+        <button  class="btn btn-warning my-3 c"      > animal4 </button> 
         <script>
           // !Doctype   document   
           //                이벤트대상.이벤트  = 이벤트핸들러(처리) 
           document.getElementById("a").onclick = function(){ 
                  alert('dog'); alert('cat');
           };
+          //  #b  - css 표현법 - 아이디가 b
+          document.querySelector("#b").onclick = function(){
+              document.querySelector("#b").style.background="black";
+              document.querySelector("#b").style.color="white";
+          }
+          //  .c  - css 표현법  - 클래스가 c
+          document.querySelector(".c").onclick = function(){
+            document.querySelector(".c").style.background = "pink";
+            document.querySelector(".c").style.color      = "blue";
+            // .c배경색상을 orange / 글자색상을 blue 
+          }
         </script>
      </div>
      <!-- ex -->
