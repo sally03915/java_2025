@@ -7,7 +7,7 @@
  3.  BOOTSTRAP(1)
 
 > 느낀점 :  무한반복시  빠져나올조건!
-> 트러블슈팅: nullPintException   ......  ~ 주의하자! 해결방안!  
+> 트러블슈팅: nullPintException   ......  ~ 주의하자! 해결방안!     
 
 
 ---
