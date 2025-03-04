@@ -1177,6 +1177,15 @@ class A{
 3)  디폴트생성자를 생성해야하는 경우 : 오버로딩 , 상속
 
 
+4.  초기화순서
+	기본값			명시적초기화		초기화블록		생성자
+	
+	4-1) 기본값      : String ,객체 - null /  int - 0 으로 초기화
+	4-2) 명시적초기화 :  int a=10;    중요콘텐츠 명시적으로 알림!    
+    4-3) 초기화블록   :  { a=10; b=20; }   여러개초기화시
+    4-4) 생성자      : 최종은 생성자에서 사용함.  인스턴스변수 초기화
+
+
 
 연습문제1)  class
 패키지명 : com.company.java010_ex
@@ -1308,11 +1317,11 @@ public class ClassEx007{
 10/3=3.33
 
 
-● 3. static
+● 3. static / final 
 1. runtime data area
 method : 정보저장 , static, final
-heap     : 동적저장 - new ,  gc( garbage collecetor)가 처리소멸
-stack     : 임시값저장
+heap   : 동적저장 - new ,  gc( garbage collecetor)가 처리소멸
+stack  : 임시값저장
 
 2. static
 - jvm 소스로딩시 메모리 할당받음
@@ -1321,6 +1330,14 @@ stack     : 임시값저장
   Calc.name
 - 객체생성과 관련이 없음.
 - 인스턴스로 접근시 권장사항이 아니므로 경고발생
+
+3. final
+- 수정하지마
+- 클래스 ( 상속받지마 - extends 사용못함)
+- 멤버변수 ( 상수 )
+- 멤버함수 ( 부모메서드사용못함 - @Override 못함)
+
+
 
 연습문제1)  static
 패키지명 : com.company.java010_ex
@@ -1377,12 +1394,12 @@ m3의 제품번호 2030-3
 m4의 제품번호 2030-4
 
 
-//------------------------------------------------------------------    다음주부터
+ 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 
-
-연습문제3)  static
-패키지명 : com.company.java010_ex
-클래스명 :  StaticEx003
+연습문제1)  멤버변수
+패키지명 : com.company.java011_ex
+클래스명 :  MemberVarEx001
 -- class Sawon3작성해주세요 
 1. 인스턴스변수, 클래스변수, 지역변수 를 구분하시오.
 2. 인스턴스메서드, 클래스메서드 구분하시오.
@@ -1390,9 +1407,7 @@ m4의 제품번호 2030-4
 class Sawon3{ 
 	 int pay      =10000;    
 	 static int su=10;     
-	  
-	  static int basicpay=pay;   
-	  
+	 static int basicpay=pay;    
 	 static int basicpay2;    
 	 
 	 public static void showSu() {   System.out.println(su);  }          
@@ -1407,11 +1422,233 @@ class Sawon3{
 		 System.out.println(this.pay);
 	 } 
 } 
-public class StaticEx003{
+public class MemberVarEx001{
   public static void main(String[] args) {
 	Sawon3   sola = new Sawon3();  
 	sola.showAll001();
   }
 }
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+연습문제1)  final
+패키지명 : com.company.java011_ex
+클래스명 : FinalEx
+다음코드에서 오류나는 부분을 찾아 주석달고 이유를 적으시오.
+class User002 {
+	final String nation = "Korea";   
+	final String jumin;   
+	String name;
+
+	public User002() { jumin="00000"; }
+	public User002(String jumin, String name) {
+		this.jumin = jumin;
+		this.name = name;
+	}
+}
+ public class FinalEx {
+	public static void main(String[] args) {
+		User002 user1 = new User002("123456-1234567", "아이유");
+		System.out.println(user1);   
+		
+		user1.nation = "USA";      
+		user1.jumin  = "123123-1234321"; 
+		user1.name = "IU"; 
+		System.out.println(user1);   
+	}
+}
+
+
+
+● 4. 지정접근자
+- 클래스 및 구성요소에 대한 접근제한 역할
+		클래스내부            패키지(폴더)	하위클래스	그외
+public		O		O		O		O
+protected		O		O		O (extends)	X 
+default(package)     O                         O		X		X
+private		O		X		X		X
+
+---------------------
+class A{
+   private int a;     int b;   protected int c;   public int d;
+   A(){}
+   A(int a){  this.a=a;}   //생성자
+   void  setA(  int a ){ this.a = a;}  //셋팅해주는 메서드 
+   int    getA(){     return this.a; }  //값찾아주는메서드
+}
+---------------------
+
+
+
+연습문제1)  지정접근자
+패키지명 : com.company.java011_ex
+클래스명 : ModifierEx1
+다음과 같이 코드를 작성하시오.
+ㅁ출력된화면
+	Milk [mno=0, mname=null, mprice=0]
+	Milk [mno=0, mname=null, mprice=2000]
+	
+ㅁ주어진조건
+public class Milk{  // java011_ex에 설정해주세요!
+	private int  mno;   
+	private String mname;  
+	private  int mprice;  
+}
+public class ModifierEx1{ // java011 패키지에 설정해주세요.
+	public static void main(String[] args) {
+		Milk m1 = new Milk();  
+		System.out.println( m1 );  
+		m1.setMprice(2000);       
+		System.out.println( m1 );
+	} // end main
+} // end class
+
+
+
+
+
+연습문제2)  지정접근자
+패키지명 : com.company.java011_ex
+클래스명 : ModifierEx2
+다음과 같이 코드를 작성하시오.
+
+ㅁ출력된화면
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+이름	국어	영어	수학	총점	평균	합격여부	장학생	랭킹
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+iron	100	100	100	300	100.00	합격	장학생	**********
+hulk	20	50	30	100	33.33	불합격		***
+
+
+
+
+
+ㅁ주어진조건
+public class Score{
+	private String name;
+	private int kor, eng, math , total;
+	private double aver;
+	private String p  , s  , rank;
+} // java011_ex에 설정해주세요!
+
+public class ModifierEx2{    // java011 패키지에 설정해주세요.
+	public static void main(String[] args) {
+		Score iron = new Score();     
+		Score hulk = new Score("hulk" , 20,50,30);    
+		
+		// Score.info()위에 메서드작성해주세요!  ##
+		// setter를 이용해주세요!
+		iron.setName("iron"); iron.setKor(100); iron.setEng(100); iron.setMath(100);
+		
+		Score.info();	  // 클래스메서드
+		iron.show();			 
+		hulk.show();	
+	}
+
+}
+
+Score.info() 사용시화면
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+이름	국어	영어	수학	총점	평균	합격여부	장학생	랭킹
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+
+
+
+● 5. 클래스배열
+
+  클래스[]  배열명 = new 클래스[갯수];
+  
+  String[]   arr     = new String[3];  
+  A1     []   carr   = new A1[3];  // [null, null, null ]
+  ※ null  - 공간은 있지만 값이 비어있어!
+   
+  carr[0]  = new  A1();  ※ 생성자를 불러서 인스턴스변수를 초기화해 사용가능하게만들기
+  1번지{  name="" }  ←  carr[0] 1번지
+
+
+
+
+연습문제1)  클래스배열
+패키지명 : com.company.java011_ex
+클래스명 : ClassArrEx1
+다음과 같이 코드를 작성하시오.
+ㅁ출력된 화면
+Apple [name=RED, order=iron, num=2, price=1000]
+Apple [name=GREEN, order=hulk, num=1, price=1500]
+Apple [name=GOLD, order=captain, num=3, price=2000]
+
+ㅁ주어진 옵션
+public class Apple{   //// 실행 main과 파일을 분리해주세요!
+   private String name;
+   private String order;
+   private int num;
+   private int price;
+}
+
+public class ClassArrEx1{
+  public static void main(String[] args) {
+        Apple[] apples= new Apple[3]; 
+        //위의 화면처럼 값 셋팅
+        //위의 화면처럼 출력
+  }
+}
+
+
+
+
+
+연습문제2)  클래스배열
+패키지명 : com.company.java011_ex
+클래스명 : ClassArrEx2
+다음과 같이 코드를 작성하시오.
+ㅁ출력된 화면
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+이름	국어	영어	수학	평균	합격여부
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+아이언맨	100	100	100	100.0	합격
+헐크	90	60	80	76.0	합격
+블랙팬서	20	60	90	56.0	불합격
+
+ㅁ주어진 옵션
+public class  Score2{   //// 실행 main과 파일을 분리해주세요!
+	private String name;   // 셋팅 setName() ,가져오기 getName()
+	private int kor, eng, math;  // setKor , getKor /  setEng , getEng / setMath , getMath
+	private double avg;
+	private String pass;
+}
+public class ClassArrEx2 {
+  public static void main(String[] args) {
+	////// MODEL
+	Score2[] std = new Score[3];  
+	// 0번째에는 아이언맨 정보넣기  - "아이언맨", 100, 100, 100
+	// 1번째에는 아이언맨 정보넣기  - "헐크", 90, 60, 80
+	// 2번째에는 아이언맨 정보넣기  - "블랙팬서", 20, 60, 90
+		
+	////// CONTROLLER - 처리 해결사 Controller)
+	Score2Process process = new Score2Process();
+	process.process_avg(std); 
+	process.process_pass(std); 
+	process.process_pass(std);  
+	
+	////// VIEW       - CONSOLE , WEB
+	Score2Print  print = new Score2Print();
+	print.show(std);  
+  }
+}
+ 
+ 
+
+
+
+
+
+
+
+
+
+
 
 
