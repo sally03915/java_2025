@@ -21,7 +21,7 @@ class Child7 extends Parent7 {
 public class PolyEx002 {
 	public static void main(String[] args) {
 		Parent7 p = new Child7();     
-		// Q3.  Parent7 p   보장하는 범위    {x=100 / method()}
+		// Q3.  Parent7 p   사용가능한 범위:   {x=100 / method()}
 		// Q4. 인스턴스화 했을때 사용가능한 범위 : new Child7()  
 		// 1번지 : {x=200 / method() Child Method  } - {x=100 /-------}
 		// p 1번지 = {x=200 /  [ method() Child Method  } - {x=100 ] /-------}
