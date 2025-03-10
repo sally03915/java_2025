@@ -9,12 +9,14 @@ public class Exception004 {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("숫자1 입력 > ");
 		a = scanner.nextInt();  //1. nextInt() 숫자입력받기를 기다림.
+								// 'a'
 		return a;
 	}
 	public static void main(String[] args) /* throws Exception */ {
 		int a=-1;
 		while(true) {
 			try {
+				//System.out.println(nextInt());
 				a=nextInt();  //##2-2   오류났어! InputMismatchException
 				if(a==1)break;
 			}catch(Exception e) {  System.out.println("오류났어!"); }
