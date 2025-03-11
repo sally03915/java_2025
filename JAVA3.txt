@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------
 part3) oop 활용  .... 챗GPT
-   - collection ( ArrayList ) ,  Thread , lambda + Stream ( method 많이 사용) 
-     io / network
+   - collection ( ArrayList ) ,  lambda + Stream ( method 많이 사용) 
+    Thread / network , ,  io
 ... java 3번
 -----------------------------------------------------------------------------------------
 
@@ -136,19 +136,90 @@ scores.add(new  Score("캡틴",80,90,100));
 
 
  
+ 
 
-Q1.   다음 빈칸을 채우시오  
-1. 콜렉션프레임워크
-- [     ##1.    ]의 단점을 개선한 클래스 [##2.    ]만 저장가능   ( 동적배열 )
-- 저장공간의 크기를 [##3.     ]으로 관리함.
+연습문제1)  Collection  Framework
+패키지명 : com.company.java016_ex
+클래스명 : MapEx001
 
-2. 핵심 인터페이스 [##4. 3개      ,    ,    ]
-- 인터페이스를 통해서 틀이 잡혀 있는 방법으로 
-  다양한 컬렉션 클래스를 이용함.
+1. MAP 만들기
+KEY	VALUE
+피구왕	통키
+---------------------
+제빵왕	김탁구
+---------------------
+요리왕	비룡
 
-  List : ##5.   기차    인덱스여부 O ,  중복허용여부 O ,  add, get, size, remove, contains
-  Set  : ##6.   주머니   인덱스여부 X ,  중복허용여부 X ,  add, 향for/iterator , size, remove, contains
-  Map  : ##7.   사전     키:값 - 쌍(Entry),           put, get , size, remove, contains
+Map<String, String> map = new HashMap<>();
+
+2 다음과 같이 문제풀기
+==============================
+KING	NAME
+==============================
+피구왕	통키
+---------------------
+제빵왕	김탁구
+---------------------
+요리왕	비룡
+---------------------
+KING의 정보를 제공중입니다
+이름을 입력하세요> 제빵왕
+
+ㅁ제빵왕 : 김탁구
+
+
+
+ 
+연습문제2)  Collection  Framework
+패키지명 : com.company.java016_ex
+클래스명 : MapEx002
+Q1. HashMap만들기
+Q2. 아래데이터 넣기
+map.put(  1,  new UserInfo("아이언맨"    , 50) );  // 1 넣어도 Integer( 클래스, 객체 )
+map.put(  2,  new UserInfo("헐크"       , 40) );  // wrapper 클래스
+map.put(  3,  new UserInfo("캡틴"       , 120) ); // boxing
+map.put(  1,  new UserInfo("아이언맨-new", 50) ); 
+
+Q3. Iterator로 출력하기 - 사용자정보 
+
+
+
+ 
+연습문제3)  Collection  Framework
+패키지명 : com.company.java016_ex
+클래스명 : MapEx003
+1. HashMap만들고 필요한 속성을 추가하시오.
+2. 갯수가 3개가 나오게 하시오
+class Fruit{
+	private int no;
+	private String name;    
+}
+
+public class MapEx003 {
+	public static void main(String[] args) {
+		Map< Fruit, Integer > map = new HashMap<>();
+		
+		map.put( new Fruit(1, "Apple")  , 1);
+		map.put( new Fruit(1, "Apple")  , 1);
+		map.put( new Fruit(2, "Banana") , 2);
+                           
+                             System.out.println("Total : " + map.size());
+             }
+}
+
+
+◆ 2. Lambda + Stream
+1. Lambda ?
+- 자바에서 함수적 프로그래밍 지원기법
+- 코드 간결하게
+
+- 함수형인터페이스
+  : 1개의 추상메서드를 갖는 인터페이스
+
+
+
+
+
 
 
 
