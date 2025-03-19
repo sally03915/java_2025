@@ -1,0 +1,36 @@
+Q1. 다음과 같이 테이블을 작성하시오.
+사용DB : mbasic
+테이블만들기 : userinfo_repeat
+    번호 : no      자료형 int   필수입력 , 숫자자동증가, 기본키
+    이름 : name  자료형 varchar(10)  필수입력
+    나이 : age    자료형  int    필수입력
+
+ use mbasic
+ create table userinfo_repeat(
+   no                  int not null  auto_increment primary key, 
+   name  varchar(10) not null,
+   age                 int not null
+ );
+
+Q2 . userinfo_repeat 테이블에   name  varchar(100)   필수입력   수정하시오.
+alter table userinfo_repeat   modify  name varchar(100) not null;
+
+alter table userinfo_repeat  change  name  name varchar(100) not null;
+
+Q3.    email varchar(50) 추가하시오.   (add, drop , modify, change, rename)
+alter table userinfo_repeat  add email varchar(50);
+
+
+Q4.    email 삭제하시오.
+alter table userinfo_repeat  drop email ;
+ 
+
+Q5. userinfo_repeat테이블에 테이블명을 userinfo로 수정하시오. 
+alter table userinfo_repeat  rename userinfo;
+
+
+
+
+
+
+
